@@ -1,18 +1,33 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+
+app.use(
+	cors({
+		origin: "*",
+	})
+);
 
 app.get("/", function (req, res) {
 	res.send("Hello. Welcome to the App");
 });
 
 app.get("/users", function (req, res) {
-	res.send("All users are safe");
+	res.json({ message: "All is well" });
 });
 
 app.get("/products", function (req, res) {
 	res.send("<h1>All products have been sold out</h1>");
 });
 
-app.listen(3030, function () {
-	console.log("The Server is listening in port : 3030");
+app.get("/todolist", function (req, res) {
+	res.json([
+		{ id: 1, message: "Go to Gym", status: false },
+		{ id: 2, message: "Have Breakfast", status: false },
+		{ id: 3, message: "Go to Office", status: false },
+	]);
+});
+
+app.listen(3000, function () {
+	console.log("The Server is listening in port : 3000");
 });
