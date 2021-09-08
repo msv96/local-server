@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const port = process.env.port || 3500;
 
 app.use(
 	cors({
@@ -28,6 +29,6 @@ app.get("/todolist", function (req, res) {
 	]);
 });
 
-app.listen(3000, function () {
-	console.log("The Server is listening in port : 3000");
+app.listen(port, function () {
+	console.log(`The Server is listening in ${port}`);
 });
